@@ -18,6 +18,8 @@ class SConfParser(object):
         with open(self.config_filepath, 'r') as config_file:
             for line in config_file:
                 if line != "\n":
+                    line = line.partition('#')[0]
+                    line = line.rstrip()
                     try:
                         lval, rval = line.split('=')
                     except ValueError:
